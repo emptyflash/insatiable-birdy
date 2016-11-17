@@ -1,4 +1,7 @@
 # Insatiable Birdy
+
+![A gif of a drinking bird](http://i.giphy.com/l41lUJ1YoZB1lHVPG.gif)
+
 A twitter streaming client using akka-http
 
 ## Example
