@@ -47,21 +47,4 @@ object InsatiableBirdy {
         case Left(_) => List()
       })
   }
-
-  def run = {
-    implicit val system = ActorSystem("insatiable-birdy")
-    implicit val materializer = ActorMaterializer()
-    import system.dispatcher
-    val consumerKey = "BIkDuViEPFW6aB5BaSuDEJQAh"
-    val consumerSecret = "PIo6VPZpvmsyJi0y1H5ahT9ufy2a4YF3oQi34Ce2ypBM7nx5vA"
-    val accessToken = "29611194-0jKqozgP37W9jov15aMAbDmV2ozBlchH2whJI3ERI"
-    val tokenSecret = "NnYjyg9RVWI9AowhVcp5eWXUdFV12n3QcxvMyYkAy8Pl2"
-    val credentials = OAuth1Credentials(
-      consumerKey,
-      consumerSecret,
-      accessToken,
-      tokenSecret)
-    val request = FilterEndpoint(credentials, Track(List("#np")))
-    twitterEndpointFlow(request).runForeach(println)
-  }
 }
