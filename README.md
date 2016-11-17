@@ -4,6 +4,8 @@ A twitter streaming client using akka-http
 ## Example
 
 ``` scala
+import io.github.insatiablebirdy._
+
 implicit val system = ActorSystem("insatiable-birdy")
 implicit val materializer = ActorMaterializer()
 import system.dispatcher
@@ -17,5 +19,5 @@ val credentials = OAuth1Credentials(
   accessToken,
   tokenSecret)
 val request = FilterEndpoint(credentials, Track(List("#np")))
-twitterEndpointFlow(request).runForeach(println)
+InsatiableBirdy.twitterEndpointFlow(request).runForeach(println)
 ```
