@@ -9,7 +9,7 @@ import akka.actor.ActorSystem
 import com.hunorkovacs.koauth.domain.KoauthRequest
 import com.hunorkovacs.koauth.service.consumer.DefaultConsumerService
 
-import scala.concurrent._
+import scala.concurrent.Await
 import scala.concurrent.duration._
 
 import java.net.URLEncoder
@@ -38,7 +38,9 @@ final case class OAuth1Credentials(
       .map(header => KoauthRequest.extractOauthParams(Some(header)))
       .map(_.toMap)
       .map({ map =>
-        map ++ map.filterKeys(k => k == "oauth_signature").mapValues(v => URLEncoder.encode(v))
+        map ++ map
+          .filterKeys(k => k == "oauth_signature")
+          .mapValues(v => URLEncoder.encode(v, "US-ASCII"))
       })
 
     val header = Await.result(oauthHeader, 3 seconds)

@@ -1,26 +1,16 @@
 package io.github.insatiablebirdy
 
-import akka.http.scaladsl._
+import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
-import akka.http.scaladsl.model.headers._
 import akka.http.scaladsl.client.RequestBuilding
 
 import akka.actor.ActorSystem
-import akka.stream._
+import akka.stream.ActorMaterializer
 
-import akka.stream.scaladsl._
+import akka.stream.scaladsl.Source
 
-import com.hunorkovacs.koauth.domain.KoauthRequest
-import com.hunorkovacs.koauth.service.consumer.DefaultConsumerService
+import scala.util.Success
 
-import scala.concurrent._
-import scala.concurrent.duration._
-import java.net.URLEncoder
-
-import scala.util.{Failure, Success}
-
-import io.circe.syntax._
-import io.circe._
 import io.circe.parser._
 import io.circe.generic.auto._
 
